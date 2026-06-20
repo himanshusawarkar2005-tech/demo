@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love U Botur ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#000000,#1a001a);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    position:relative;
+    text-align:center;
+}
+
+.heart{
+    position:relative;
+    width:220px;
+    height:220px;
+    background:#ff1493;
+    transform:rotate(-45deg);
+    animation:beat 1.2s infinite;
+    box-shadow:
+        0 0 30px #ff1493,
+        0 0 60px #ff1493,
+        0 0 120px #ff1493;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:#ff1493;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-110px;
+    left:0;
+}
+
+.heart::after{
+    left:110px;
+    top:0;
+}
+
+.message{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:34px;
+    font-weight:bold;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #ff69b4,
+        0 0 40px #ff1493;
+    z-index:10;
+    animation:glow 2s infinite alternate;
+}
+
+.floating-heart{
+    position:absolute;
+    color:#ff69b4;
+    font-size:25px;
+    animation:float 8s linear infinite;
+}
+
+@keyframes beat{
+    0%,100%{
+        transform:rotate(-45deg) scale(1);
+    }
+    50%{
+        transform:rotate(-45deg) scale(1.15);
+    }
+}
+
+@keyframes glow{
+    from{
+        opacity:0.8;
+    }
+    to{
+        opacity:1;
+        text-shadow:
+        0 0 20px #fff,
+        0 0 40px #ff69b4,
+        0 0 80px #ff1493;
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="heart"></div>
+    <div class="message">I LOVE U BOTUR ❤️</div>
+</div>
+
+<script>
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (5 + Math.random()*5) + "s";
+    heart.style.fontSize = (15 + Math.random()*30) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,250);
+</script>
+
+</body>
+</html>
